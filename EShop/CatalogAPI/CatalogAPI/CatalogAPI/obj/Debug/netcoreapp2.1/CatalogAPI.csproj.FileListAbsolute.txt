@@ -1,0 +1,14 @@
+D:\07082019\EShop\CatalogAPI\CatalogAPI\CatalogAPI\bin\Debug\netcoreapp2.1\CatalogAPI.deps.json
+D:\07082019\EShop\CatalogAPI\CatalogAPI\CatalogAPI\bin\Debug\netcoreapp2.1\CatalogAPI.runtimeconfig.json
+D:\07082019\EShop\CatalogAPI\CatalogAPI\CatalogAPI\bin\Debug\netcoreapp2.1\CatalogAPI.runtimeconfig.dev.json
+D:\07082019\EShop\CatalogAPI\CatalogAPI\CatalogAPI\bin\Debug\netcoreapp2.1\CatalogAPI.dll
+D:\07082019\EShop\CatalogAPI\CatalogAPI\CatalogAPI\bin\Debug\netcoreapp2.1\CatalogAPI.pdb
+D:\07082019\EShop\CatalogAPI\CatalogAPI\CatalogAPI\obj\Debug\netcoreapp2.1\CatalogAPI.csproj.CoreCompileInputs.cache
+D:\07082019\EShop\CatalogAPI\CatalogAPI\CatalogAPI\obj\Debug\netcoreapp2.1\CatalogAPI.RazorAssemblyInfo.cache
+D:\07082019\EShop\CatalogAPI\CatalogAPI\CatalogAPI\obj\Debug\netcoreapp2.1\CatalogAPI.RazorAssemblyInfo.cs
+D:\07082019\EShop\CatalogAPI\CatalogAPI\CatalogAPI\obj\Debug\netcoreapp2.1\CatalogAPI.AssemblyInfoInputs.cache
+D:\07082019\EShop\CatalogAPI\CatalogAPI\CatalogAPI\obj\Debug\netcoreapp2.1\CatalogAPI.AssemblyInfo.cs
+D:\07082019\EShop\CatalogAPI\CatalogAPI\CatalogAPI\obj\Debug\netcoreapp2.1\CatalogAPI.RazorTargetAssemblyInfo.cache
+D:\07082019\EShop\CatalogAPI\CatalogAPI\CatalogAPI\obj\Debug\netcoreapp2.1\CatalogAPI.dll
+D:\07082019\EShop\CatalogAPI\CatalogAPI\CatalogAPI\obj\Debug\netcoreapp2.1\CatalogAPI.pdb
+D:\07082019\EShop\CatalogAPI\CatalogAPI\CatalogAPI\obj\Debug\netcoreapp2.1\CatalogAPI.csprojAssemblyReference.cache

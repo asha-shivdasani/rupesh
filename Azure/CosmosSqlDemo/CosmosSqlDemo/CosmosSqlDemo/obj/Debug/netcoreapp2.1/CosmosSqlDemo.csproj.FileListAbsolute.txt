@@ -1,0 +1,13 @@
+D:\07082019\Azure\CosmosSqlDemo\CosmosSqlDemo\CosmosSqlDemo\bin\Debug\netcoreapp2.1\CosmosSqlDemo.deps.json
+D:\07082019\Azure\CosmosSqlDemo\CosmosSqlDemo\CosmosSqlDemo\bin\Debug\netcoreapp2.1\CosmosSqlDemo.runtimeconfig.json
+D:\07082019\Azure\CosmosSqlDemo\CosmosSqlDemo\CosmosSqlDemo\bin\Debug\netcoreapp2.1\CosmosSqlDemo.runtimeconfig.dev.json
+D:\07082019\Azure\CosmosSqlDemo\CosmosSqlDemo\CosmosSqlDemo\bin\Debug\netcoreapp2.1\CosmosSqlDemo.dll
+D:\07082019\Azure\CosmosSqlDemo\CosmosSqlDemo\CosmosSqlDemo\obj\Debug\netcoreapp2.1\CosmosSqlDemo.csprojAssemblyReference.cache
+D:\07082019\Azure\CosmosSqlDemo\CosmosSqlDemo\CosmosSqlDemo\obj\Debug\netcoreapp2.1\CosmosSqlDemo.csproj.CoreCompileInputs.cache
+D:\07082019\Azure\CosmosSqlDemo\CosmosSqlDemo\CosmosSqlDemo\obj\Debug\netcoreapp2.1\CosmosSqlDemo.AssemblyInfoInputs.cache
+D:\07082019\Azure\CosmosSqlDemo\CosmosSqlDemo\CosmosSqlDemo\obj\Debug\netcoreapp2.1\CosmosSqlDemo.AssemblyInfo.cs
+D:\07082019\Azure\CosmosSqlDemo\CosmosSqlDemo\CosmosSqlDemo\bin\Debug\netcoreapp2.1\Microsoft.Azure.Documents.ServiceInterop.dll
+D:\07082019\Azure\CosmosSqlDemo\CosmosSqlDemo\CosmosSqlDemo\bin\Debug\netcoreapp2.1\Cosmos.CRTCompat.dll
+D:\07082019\Azure\CosmosSqlDemo\CosmosSqlDemo\CosmosSqlDemo\bin\Debug\netcoreapp2.1\CosmosSqlDemo.pdb
+D:\07082019\Azure\CosmosSqlDemo\CosmosSqlDemo\CosmosSqlDemo\obj\Debug\netcoreapp2.1\CosmosSqlDemo.dll
+D:\07082019\Azure\CosmosSqlDemo\CosmosSqlDemo\CosmosSqlDemo\obj\Debug\netcoreapp2.1\CosmosSqlDemo.pdb

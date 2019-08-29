@@ -1,0 +1,5 @@
+D:\07082019\EShop\CatalogAPI\CatalogAPI\obj\Debug\netcoreapp2.1\CatalogAPI.csproj.CoreCompileInputs.cache
+D:\07082019\EShop\CatalogAPI\CatalogAPI\obj\Debug\netcoreapp2.1\CatalogAPI.RazorAssemblyInfo.cache
+D:\07082019\EShop\CatalogAPI\CatalogAPI\obj\Debug\netcoreapp2.1\CatalogAPI.RazorAssemblyInfo.cs
+D:\07082019\EShop\CatalogAPI\CatalogAPI\obj\Debug\netcoreapp2.1\CatalogAPI.AssemblyInfoInputs.cache
+D:\07082019\EShop\CatalogAPI\CatalogAPI\obj\Debug\netcoreapp2.1\CatalogAPI.AssemblyInfo.cs

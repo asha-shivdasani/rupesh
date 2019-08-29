@@ -1,0 +1,11 @@
+D:\07082019\Azure\CosmosMongoDemo\CosmosMongoDemo\CosmosMongoDemo\bin\Debug\netcoreapp2.1\CosmosMongoDemo.deps.json
+D:\07082019\Azure\CosmosMongoDemo\CosmosMongoDemo\CosmosMongoDemo\bin\Debug\netcoreapp2.1\CosmosMongoDemo.runtimeconfig.json
+D:\07082019\Azure\CosmosMongoDemo\CosmosMongoDemo\CosmosMongoDemo\bin\Debug\netcoreapp2.1\CosmosMongoDemo.runtimeconfig.dev.json
+D:\07082019\Azure\CosmosMongoDemo\CosmosMongoDemo\CosmosMongoDemo\bin\Debug\netcoreapp2.1\CosmosMongoDemo.dll
+D:\07082019\Azure\CosmosMongoDemo\CosmosMongoDemo\CosmosMongoDemo\obj\Debug\netcoreapp2.1\CosmosMongoDemo.csprojAssemblyReference.cache
+D:\07082019\Azure\CosmosMongoDemo\CosmosMongoDemo\CosmosMongoDemo\obj\Debug\netcoreapp2.1\CosmosMongoDemo.csproj.CoreCompileInputs.cache
+D:\07082019\Azure\CosmosMongoDemo\CosmosMongoDemo\CosmosMongoDemo\obj\Debug\netcoreapp2.1\CosmosMongoDemo.AssemblyInfoInputs.cache
+D:\07082019\Azure\CosmosMongoDemo\CosmosMongoDemo\CosmosMongoDemo\obj\Debug\netcoreapp2.1\CosmosMongoDemo.AssemblyInfo.cs
+D:\07082019\Azure\CosmosMongoDemo\CosmosMongoDemo\CosmosMongoDemo\bin\Debug\netcoreapp2.1\CosmosMongoDemo.pdb
+D:\07082019\Azure\CosmosMongoDemo\CosmosMongoDemo\CosmosMongoDemo\obj\Debug\netcoreapp2.1\CosmosMongoDemo.dll
+D:\07082019\Azure\CosmosMongoDemo\CosmosMongoDemo\CosmosMongoDemo\obj\Debug\netcoreapp2.1\CosmosMongoDemo.pdb

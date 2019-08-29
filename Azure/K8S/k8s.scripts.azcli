@@ -1,0 +1,79 @@
+#Login to Azure
+#az login
+
+#Create a resource group
+az group create -n K8SGroup -l CentralUS
+
+#Confirm group creation by listing it
+az group list -o table
+
+#Create Kubernetes Cluster
+az aks create --name k8scluster --location CentralUS --resource-group K8SGroup --enable-addons monitoring --generate-ssh-keys --node-count 2
+
+#Install Kubernetes CLI (kubectl.exe)
+az aks install-cli
+
+#Authenticate to KBS cluster
+az aks get-credentiyals -n k8scluster -g K8SGroup
+
+#Verify the kubectl configuration
+kubectl config view
+
+#list the nodes
+kubectl get nodes
+
+#list the pods
+kubectl get pods
+
+#list the replica sets
+kubectl get rs
+
+#list the services
+kubectl get svc
+
+#list the deployments
+kubectl get deploy
+
+#Deploy insurance service
+kubectl apply -f ./yaml/insuranceportal-service.yaml
+
+kubectl apply -f ./yaml/identityapi-service.yaml
+
+#Deploy insurance deploy (rs+pods)
+kubectl apply -f ./yaml/insuranceportal-deploy.yaml
+
+kubectl apply -f ./yaml/identityapi-deploy.yaml
+
+kubectl replace -f ./yaml/insuranceportal-deploy.yaml
+
+#Demo 2
+#Create SQL Server SA Password as Secret
+kubectl create secret generic mssql --from-literal=SA_PASSWORD="Labuser@123456"
+
+#Create PVC
+kubectl apply -f ./yaml/sqlserver-pvc.yaml
+
+#Deploy SQL Server
+kubectl apply -f ./yaml/sqlserver-deploy.yaml
+
+#Deploy SQL Server Service
+kubectl apply -f ./yaml/sqlserver-service.yaml
+
+#Deploy Event API Service
+kubectl apply -f ./yaml/eventapi-service.yaml
+
+#Deploy Event API 
+kubectl apply -f ./yaml/eventapi-deploy.yaml
+
+#View Pod logs
+kubectl logs <name of pod>
+
+#View Pod Details
+kubectl describe pod <name of pod>
+
+#Create RBAC for Dashboard
+kubectl apply -f ./yaml/dashboard-admin.yaml
+
+kubectl delete svc mssql
+
+kubectl apply -f ./yaml/sqlserver-service.yaml
