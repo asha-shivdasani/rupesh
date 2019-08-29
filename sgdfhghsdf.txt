@@ -1,0 +1,27 @@
+how to create async method with cosmos db in webapi
+
+
+//return Ok(entity);
+            //var catalogInfoId = await catalogContext.CatalogInfo.FindAsync<CatalogInfo>(;
+            //if (catalogInfoId != null)
+            //    return Ok(catalogInfoId);
+            //else
+            //    return NotFound();
+
+
+"Items" : [
+		{
+			"itemid" : 1,
+			"itemname" : "fossil",
+			"itemprice" : 500,
+			"itemImageUrl" : "https://eshopimages.blob.core.windows.net/eshopimages/Clocks/Image2.jpeg",
+			"itemDescription" : "test."
+		},
+		{
+			"itemid" : 2,
+			"itemname" : "diesel",
+			"itemprice" : 600,
+			"itemImageUrl" : "https://eshopimages.blob.core.windows.net/eshopimages/ChildTshirts/Image3.jpeg",
+			"itemDescription" : "test."
+		}
+	],

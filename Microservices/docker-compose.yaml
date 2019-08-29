@@ -1,0 +1,44 @@
+version: "3"
+
+networks: 
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+services: 
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    container_name: mssqlcontainer
+    ports: 
+      - "1501:1433"
+    networks: 
+      - backend
+    environment:  
+      SA_PASSWORD: ${SA_PASSWORD}
+      ACCEPT_EULA: ${ACCEPT_EULA}
+
+  identitysvc:
+    build: ./IdentityAPI/IdentityAPI/
+    container_name: identity
+    ports: 
+      - "5000:80"    
+    depends_on: 
+      - mssql
+    networks: 
+      - backend
+    environment:
+      - ConnectionStrings:IdentitySqlConnection=${IDENTITY_CONNECTION_STRING}      
+
+  eventsvc:
+    build: ./EventAPI/EventAPI/
+    container_name: eventapi
+    ports: 
+      - "5001:80"    
+    depends_on: 
+      - mssql
+      - identitysvc
+    networks: 
+      - backend
+    environment:
+      - ConnectionStrings:EventSqlConnection=${EVENT_CONNECTION_STRING}     

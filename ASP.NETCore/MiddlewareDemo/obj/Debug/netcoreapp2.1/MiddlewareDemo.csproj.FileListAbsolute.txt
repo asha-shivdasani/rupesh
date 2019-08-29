@@ -1,0 +1,14 @@
+D:\07082019\ASP.NETCore\MiddlewareDemo\bin\Debug\netcoreapp2.1\MiddlewareDemo.deps.json
+D:\07082019\ASP.NETCore\MiddlewareDemo\bin\Debug\netcoreapp2.1\MiddlewareDemo.runtimeconfig.json
+D:\07082019\ASP.NETCore\MiddlewareDemo\bin\Debug\netcoreapp2.1\MiddlewareDemo.runtimeconfig.dev.json
+D:\07082019\ASP.NETCore\MiddlewareDemo\bin\Debug\netcoreapp2.1\MiddlewareDemo.dll
+D:\07082019\ASP.NETCore\MiddlewareDemo\bin\Debug\netcoreapp2.1\MiddlewareDemo.pdb
+D:\07082019\ASP.NETCore\MiddlewareDemo\obj\Debug\netcoreapp2.1\MiddlewareDemo.csprojAssemblyReference.cache
+D:\07082019\ASP.NETCore\MiddlewareDemo\obj\Debug\netcoreapp2.1\MiddlewareDemo.csproj.CoreCompileInputs.cache
+D:\07082019\ASP.NETCore\MiddlewareDemo\obj\Debug\netcoreapp2.1\MiddlewareDemo.RazorAssemblyInfo.cache
+D:\07082019\ASP.NETCore\MiddlewareDemo\obj\Debug\netcoreapp2.1\MiddlewareDemo.RazorAssemblyInfo.cs
+D:\07082019\ASP.NETCore\MiddlewareDemo\obj\Debug\netcoreapp2.1\MiddlewareDemo.AssemblyInfoInputs.cache
+D:\07082019\ASP.NETCore\MiddlewareDemo\obj\Debug\netcoreapp2.1\MiddlewareDemo.AssemblyInfo.cs
+D:\07082019\ASP.NETCore\MiddlewareDemo\obj\Debug\netcoreapp2.1\MiddlewareDemo.RazorTargetAssemblyInfo.cache
+D:\07082019\ASP.NETCore\MiddlewareDemo\obj\Debug\netcoreapp2.1\MiddlewareDemo.dll
+D:\07082019\ASP.NETCore\MiddlewareDemo\obj\Debug\netcoreapp2.1\MiddlewareDemo.pdb

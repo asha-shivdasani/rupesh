@@ -1,0 +1,10 @@
+{
+  "ProjectName": "HexaVarsity",
+  "Duration": 10,
+  "ProjectManager": "ABC",
+  "Courses": {
+    "Title": "Microservice development using .NET Core",
+    "NoOfParticipants": 8
+  },
+  "Message": "MySettings JSON"
+}

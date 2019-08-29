@@ -1,0 +1,14 @@
+D:\07082019\Microservices\EventAPI\EventAPI\bin\Debug\netcoreapp2.1\EventAPI.deps.json
+D:\07082019\Microservices\EventAPI\EventAPI\bin\Debug\netcoreapp2.1\EventAPI.runtimeconfig.json
+D:\07082019\Microservices\EventAPI\EventAPI\bin\Debug\netcoreapp2.1\EventAPI.runtimeconfig.dev.json
+D:\07082019\Microservices\EventAPI\EventAPI\bin\Debug\netcoreapp2.1\EventAPI.dll
+D:\07082019\Microservices\EventAPI\EventAPI\bin\Debug\netcoreapp2.1\EventAPI.pdb
+D:\07082019\Microservices\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.csprojAssemblyReference.cache
+D:\07082019\Microservices\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.csproj.CoreCompileInputs.cache
+D:\07082019\Microservices\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.RazorAssemblyInfo.cache
+D:\07082019\Microservices\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.RazorAssemblyInfo.cs
+D:\07082019\Microservices\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.AssemblyInfoInputs.cache
+D:\07082019\Microservices\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.AssemblyInfo.cs
+D:\07082019\Microservices\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.RazorTargetAssemblyInfo.cache
+D:\07082019\Microservices\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.dll
+D:\07082019\Microservices\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.pdb
