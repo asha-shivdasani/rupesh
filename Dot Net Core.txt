@@ -1,0 +1,704 @@
+.NET Core
+----------
+Why .NET Core??
+Current IT Trend
+- To build cloud based applications
+- Microservices
+- Docker and containerization
+
+What is new in .NET Core?
+1) Modern applications is build using .NET core.
+2) cross platform support - application can be build in different platforms like windows, mac, linux.
+3) community driven/open source.
+4) Built in DI support.
+5) Nuget package based, means only copy source code from one machine to other and packages would be restored on its own.
+6) Compared to .NET Framework it is very light weight and due to this it supports containerization.
+7) No dependency on IIS module, means we can run application without IIS. It is self hosted and has built in server.
+8) Current stable version 2.2.x support only ASP.NET Core and UWP(Universal Windows Platform) applications. We cannot 
+create windows application using .NET Core
+9) Dotnet CLI support
+
+To check Dotnet CLI is installed?
+- Go to cmd and run below commands:
+1) dotnet
+2) dotnet --version
+
+DotNet CLI Commands:
+1) dotnet new -h
+2) dotnet restore
+3) dotnet build
+4) dotnet run
+5) dotnet <dllName>
+6) dotnet publist -c <Release/debug> -o <out folder>
+7) dotnet add package <package name>
+
+Create Project:
+1) Create a folder in any drive
+2) dotnet new templatename -n "ProjectName" -o "Outputfolder" (-o is optional)
+Note: Get template name from command "dotnet new -h"
+3) Open visual studio code using command "code ."
+4) NET Core Project Structure:
+Restore packages explicitly: Go to .csproj file
+- Dotnet metapackage: 
+	- .NET Core project uses a metapackage called "Microsoft.AspNetCore.App"(bundle name which complies all/other DLLs)
+metapackage means we should use "Microsoft.AspNetCore.App" instead of using individual package.
+	- .NET Core 2.0 metapackage name was "Microsoft.AspNetCore.All"
+	- From 2.1 onwards they changed name to "Microsoft.AspNetCore.App"
+
+- Program.cs
+	- Create and start the Web Host(Kestral server starts)
+
+- Startup.cs
+	- ConfigureServices()
+		- It is used to configure services reqiured for the ASP.NET Core applications
+			eg: MVC Service, Cors Service, Database Service, Caching Service.
+	- Configure()
+		- Preparing the request pipeline
+ 
+- AppSettings.json or appsettings.*.json
+	- Store the app configuration such as connectio  string and other key value pairs.
+
+- wwwroot
+	- This directory contains the static files for the web apps such as css, js, images, html files etc
+
+5) Restore packages using command "dotnet restore".
+6) Compile application using command "dotnet build".
+7) Run application using command "dotnet run"  -- Run project from root folder, It runs the project.
+8) Run DLL using command "dotnet DLLName" -- Run project from compiled output, It runs the compiled output(application).
+9) To create published output use command "dotnet publish -c Release", It will compile and create a release folder inside
+the bin folder
+9) To create published output use command "dotnet publish -c Release -o dist", It will compile and palce compiled dll in 
+specified(output) folder.
+eg: dist folder
+10) Add third party packages using "dotnet add package <package name>"
+
+- .NET Core Execution/Request Pipeline or .NET Core Application lifecycle:
+	- Application server is started with the Main method (Program.cs)
+		- WebHostBuilder will start the web application in kestral server and with some pre-configured settings/things.
+		- Configuring the configuration sources.
+		- Configuring the logging.
+		- Configuring static file server location.
+		- Configuring the Host(Kestral config)
+
+	- Startup Class -> ConfigureServices() -- enabling the services.
+		- Register the services in IServicesCollection.
+		- Every service is registered as a DI service.
+
+	- Startup class -> Configure()
+		- Configure the request pipeline.
+		- Configuring the middleware(set of functions).
+		- Middleware is configured in the IApplicationBuilder object.
+
+	- Filters and Actions
+	- Result filters are executed.
+	- After Result filter, send reponse to client(View result/jsonresult etc)
+
+Note: main(), configureservices(), configure executes only once in application lifecycle.
+Any method staring with "use" then it is a middleware. Ordering of middleware is important.
+
+Command for empty project: dotnet new web -n <ProjectName>
+
+- Middleware
+	- Request pipeline is created with a set of middleware (Configure())
+	- Middleware is set of functions that executes when request comes and response goes.
+	- Middleware can be applied using the Use method, Run method, Map method, mapWhen method.
+	- Run()
+		- This is a request terminator. 
+	- Use()
+		- Configure a middleware that executes for request and response.
+	- Map()
+		- It creates more than one pipeline and matches it with URL.
+		- It is ued to define pipeline specific to URLs.
+		- It is based on route
+
+	- mapWhen()
+		- It is based on condition.
+
+- Built-in Middleware
+	- StaticFiles
+	- DirectoryBrowser
+	- DefaultFiles
+	- FileServer
+	- Server side Exception Handling - Status Code >= 500
+		- Development
+			UseDeveloperExceptionPage()
+
+		- Production
+			UseExceptionHandler()
+				- With exception handler path (Home/Error)
+				- With custom exception handler pipeline
+
+	- Client side error (status code between 404 and 499)
+		- UseStatusCodePages()
+		- UseStatusCodePagesWithRedirects()
+		- UseStatusCodePagesWithReExecute()
+
+- Middleware for Exception Handling
+	- UseDeveloperExceptionPage()
+	- UseExceptionHandler()
+
+- How to set the environment name
+	- ASPNETCORE_ENVIRONMENT = "Production"
+	- env.EnvironmentName = "Production"
+
+- Custom Error Message
+	- Explained in  Configure() method of Startup.cs file of FirstMVCCore application.
+
+- Host
+	- Host ASP.NET Core app with or without IIS.
+	- App is hosted inside a lightweight web server called Kestral.
+	- Kestral is a built-in web server.
+	- Two types of Host available in .NET Core
+		- Web Host
+			- Used by web applications that runs on http and https
+		- Generic Host
+			- Used to run background task application that does not requires http and https.
+			- No user interaction.
+	- Configure the Running Environment
+		- Configure the we server (kestral)
+		- Confiure the application
+			- Configure the configuration sources.
+			- Cofigure the static file folder.
+		- Configure the logging.
+
+	WebHost host = new WebHost()
+	host.ConfigureLogging()
+	host.ConfigureHostConfiguration() // kestral config
+	host.ConfigureAppConfiguration() // app config
+
+- Order
+
+Appsettings.json
+{Username :"Asha"}
+
+Environment Variables
+
+CmdLine args
+
+InMemory
+
+Xml File
+<Username>Shivdasani</Username>
+
+Ini File
+
+Json File
+
+
+Key Per File
+
+If we have same values in 1 and 5 then it will render "Shivdasani" value because appsettings can be overridden.
+
+** App configuration order is very important
+
+- How to Read Application Configuration Values
+	- Explained in Startup() and ConfigureServices() method of Startup.cs file of FirstMVCCore application.
+
+- How to Read Application Configuration Values using Class
+	- Explained in Startup, HomeController and AppConfiguration Class of FirstMVCCore application.
+
+
+- Dependency Injection
+	- Scopes
+		- Singleton()
+		- Scoped()
+			- for every request creates new instance but not for injection/inner request. 
+		- Transient() 
+			- for every request creates new instance.
+	- Explained in DependencyInjectionDemo Project
+	- Constructor Injection
+		- injecting services through constructor and its scope is for entire class.
+	- Method Injection
+		- injecting services through method and its scope is only for that method.
+
+- TagHelpers
+
+- Docker
+- Confirm its running in system tray and check it is in white color icon
+- Red color means its not running, need to restart.
+- Right click and restart.
+- If memory error, right click go to settings->
+- To check the commands and download
+	- docker images
+		- List the images in the machine (Empty list)
+	- docker pull hello-world
+		- A sample small sized image to test docker is working or not
+	- docker pull mcr.microsoft.com/dotnet/core/sdk
+		- download the dotnet core sdk image (large size image)
+
+- MVC
+	- TagHelpers
+		- Built-in tag helpers
+		- Custom tag helpers
+		- Imported tag helpers in _Viewimport.cshtml using addTagHelper
+	- Caching
+		- Why?
+			- Each time client request for the data, it loads from the datasource.
+			- To improve the performance of application we can cache the data 
+in nearby storage which is easy to access.
+		- How?
+			- Responce Cache (used to cache the output of action).
+				- .NET Framework we use [OutputCache] attribute.
+				- .NET Core uses [ResponseCache] attribute.
+			- Inmemory data caching (used to cache data within the application/inside memory.)
+				- Cache.Insert(). Cache.Add() in .NET Framework.
+				- IMemoryCache interface.
+				- Need to configure the service.
+			- Distributed Caching
+				- IDistributedCache
+					- SqlServer (Data Source=PATANJALI-11\SQLEXPRESS;Initial Catalog=HexaDB;Integrated Security=True)
+					- Redis Cache
+					- In-memory distributed caching(used for dev and test)
+	- State Management
+		- ViewBag, ViewData
+			- Pass the data from controller action to view.
+			- ViewBag is a dynamic property approach and ViewData used dictionary approach.
+			- ViewData["Message"] = "Hello"
+			- var msg = ViewBag.Message
+		- TempData
+			- TempData is used to pass data from one action to another with redirection.
+			- TempaData["Message"] = "Hello"
+			- In .NET Core there are two tempdata providers available:
+				- CookieBasedTempDataProvider (Method name - AddCookieTempDataProvider())
+					- Is the default provider for tempdata.
+				- SessionBasedTempDataProvider (Method name - AddSessionTempDataProvider())
+		- Cookies
+			- Cookies are temporary test text files created in the client browser.
+			- Cookies travels from server to client and client to server.
+			- Server controller action creates the cookie and attach it to Response.
+			- When response reaches the browser it store the cookie in client machine.
+			- When next request goes to the server browser attach all cookies along with request.
+			- Security is compromised when using cookies.
+		- Session
+			- Session is small amount of memory which is created for every user in server.
+			- Any one of the Distributed cache must be configured to use session.
+			- Enable the session service in the ConfigureServices method
+				services.AddSession()
+			- Configure the Session middleware in the Configure method.
+				app.UseSession()
+			- To access the session in controller we need to use HttpContext
+				HttpContext.Session["key"] = "value"
+			- Session uses cookies
+			- 
+		- QueryString
+			- Pass data along with url from one page to the next page.
+			- Request object contains a QueryString Property.
+		- Hidden fields
+			- Used with forms
+		- Dependency Injection/Services
+			- Create a singleton instance of service that can share data between controllers.
+		- HttpContext.Items
+			- Pass data from middleware to controller actions.
+
+- Entity Framework
+	- ORM tool
+	- EF 6 (EF Core 2.2)
+	- Code migrations
+	- Object Relational Mapping
+		- Class Objects		Relational Table       
+			Employee		Employees
+			Student			Students
+			Product			Products
+			Category		Categories
+		- LINQ function to query the data from the tables
+		- The LINQ methods return the records as object or object collection.
+		- To save the data in to tables we call the Add() then SaveChages().
+		- Create a DbContext object that acts like a database object.
+		- DbContext class contains DbSet<Model> properties that acts like tables.
+		- In model classes we can apply model validation parameters.
+			- Code First approach (Code first migrations)
+			- Database First approach (Used for existing application which would be converted to EF)
+
+		- EF Core in .NET Core
+			- In-memory database
+			- SqlServer database
+
+	- Approches
+		- Database First
+		- Code First
+	- Code First
+		- Create models
+		- Create DbContext
+		- Register DbConrtext as a Service
+			- In-memory database
+			- Sql server database
+		- Code first migration commands
+			VS PS: Add-Migration "InitialCreate"
+			CLI  : dotnet ef migrations add "InitialCreate"
+				- Create the migration files
+			VS PS: Update-Database
+			CLI  : dotnet ef database update
+				- Create database and tables
+
+
+Microservices
+	- Monolithic applications
+	- Disadvantages
+		- Tightly coupled
+		- Scaling of individual module is not possible
+		- Security
+		- Choice of language and frameworks.
+		- Resileincy is less
+		- Redeployment of individual modules not possible.
+		- Difficult to use polyglot persistance.
+
+	- Microservices (Design Pattern)
+		- A service that can be developed,tested and deployed indepentenly without affecting other modules
+		  of the application
+		- Distributed architectured.
+		- All services are accessible using well defined communication endpoints such as REST endpoints.
+			- Other communication strategies also used
+				- Message based communication.
+				- Event driven architecture.
+		- Never share DB
+		- Microservices Communication
+			- Synchronous
+				- REST Calls.
+					- Both sender and receiver must be online
+					- Its a real time communication.
+					- Always a response send back to the sender.
+					- Always one to one communication.
+			- Asynchronous
+				- Message based communication (Queue)
+					- It is not mandatory that sender and receiver to be online.
+					- Its not a real time communication.
+					- It may not send a response back to the sender.
+					- Messages are stored in queues with in the message broker service.
+					- You can use broadcasting of messages to achieve one to many communication.
+				- Event driven architecture.
+					- It is real time.
+					- One to many is possible.
+					- Not mandatory to send a response/subscribe the event.
+
+Eshop
+	Catalog
+		- Get All Products
+		- Get popular Products
+		- Get most rated Products
+		- Get details by Id
+		- Search by name/tag
+		- Add item to stock
+		- Delete item from stock
+		- Update stock details
+			- Document (NoSQL)
+
+	User Management
+		- Register user
+		- Login user
+		- Profile management
+			- Relational DB
+
+	Cart Management
+		- Add item to cart
+		- Remove item from cart
+		- Move to wishlist
+		- Clear cart
+			- Redis(NoSQL)
+
+	Order Management
+		- Place order
+		- Cancel order
+		- Track order
+		- Order history
+			- Document (NoSQL)
+	Payment
+		- Pay by cash
+		- Apply discount/coupon
+		- Pay by card
+		- Refund information
+		- Net banking
+			- No DB
+
+Relational Db
+	- Structured tabled
+	- Sql query
+	- Foreign keys
+	- Joins
+
+NoSQL data storage
+	- Unstructured/Semi-structured
+	- No SQL types
+		- Document storage (stored data in JSON format)
+			- MongoDB
+			- Document DB(SQL Core)
+		- Key-Value pair storage
+			- Azure Table storage
+			- Redis
+		- Graph Database
+			- Gremlin
+			- neo4j
+		- Column family
+			- Casandra
+
+
+Event API
+	- Add Event (Auth)
+	- Delete Event (Auth)
+	- Update Event (Auth)
+	- List Events
+	- Get Event By Id
+	- Search Events
+
+Identity API
+	- Register
+	- Login
+	- Manage Profile
+
+Angular UI
+	- List events
+	- Allow user to register
+	- Allow user to Login
+	- Allow admin to add events
+	- Allow admin to delete events
+	- Allow logged in users to register for an event.
+
+
+- WEB API
+	- Concepts
+		- Http Methods (Get, Post, Put, Patch, Delete, Options)
+		- Http Status Code
+			- 1xx : Informative
+			- 2xx : Success(200 - OK, 201 - Created)
+			- 3xx : Redirect
+			- 4xx : Client Error (400 - Badrequest, 404 - Not found, 401 - unauthorized, 403 - Access denied)
+			- 5xx : Server Error(500 - Internal server error)
+		- Http Headers
+			- Request
+				- Content-Type: MIME type of the data which you are sending to server.
+				- Accept: Tells the server what type of response data client expects
+					-** The response content type is based on request's accept header
+			- Response
+				- Content-Type: MIME type of the data which server is sending to client in response body.
+			- Major type/Minor type
+				- Major types:
+					- text : All text type data which is unicode and ascii
+						text/xml
+						text/json
+						text/css
+						text/html
+						text/plain
+					- audio
+						audio/mp3
+						audio/midi
+						audio/wma
+					- video
+						video/wmv
+						video/mkv
+						video/mp4
+					- image
+						image/jpg
+						image/png
+						image/bmp
+						image/gif
+					- application
+						application/octet-stream
+						application/json
+
+
+	- Base class is ControllerBase
+	- [ApiController] attribute
+		- Automatically set the content type header as application/json.
+		- Typically in API actions we use [FromBody], [FromRoute] kind of attributes.
+	- By default only JsonFormatter is supported for input and output.
+	- Return types of actions
+		- Specific types such as string, int, bool etc
+		- IActionResult
+		- ActionResult<T> (recommended)	
+
+	- API Documentation
+		- Open API Specification
+			- NSwag
+			- Swagger
+
+Angular UI
+- Install jquery in angular using "npm i --save jquery bootstrap@4.3"
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBc2hhIiwiZW1haWwiOiJhc2hhczJAaGV4YXdhcmUuY29tIiwianRpIjoiZDQwMWYyNzgtZjk4NS00NjExLThmMGItYTE0MGYyNzk1MzIzIiwiZXhwIjoxNTY1NzgzNjQ1LCJpc3MiOiJpZGVudGl0eSIsImF1ZCI6ImV2ZW50In0.BWH_9B1ooJEEi21v4bsdlxQfqmwsgi4DsHWnt0BqFwA
+
+
+Docker
+	- What?
+		- Containerization technology/software to containerize applications.
+		- Docker is available for windows, linux and mac
+		- Docker supports windows and linux containers
+			- Docker desktop for windows uses a VM to run Linux containers.
+			- We can switch between linux and windows containers.
+	- Why?
+		- Application A developed in Framework X
+		- Application B developed in Framework Y
+		- Containerization
+			- Software: Docker, RKT, LXD, LXC
+		- Docker
+			- Two types of containers
+				- Linux container
+				- Windows container
+	- How?
+		- Containerizing applications
+			- In the project folder you need to create a Dockerfile
+			- A docker file is a file that contains the instruction to build a docker image
+			- Name of the docker file is 'Dockerfile'
+			- A Dockerfile contains the following commands:
+				FROM <base image name>
+					eg: FROM nginx:latest
+					eg: FROM mcr.microsoft.com/dotnet/core/aspnet:latest
+				LABEL <key> <value>
+					LABEL author="Asha Shivdasani"
+					LABEL company="Hexaware"
+				WORKDIR <dir_path>
+					Set the working directory inside the container.
+					eg: WORKDIR C:\Inetpub\wwwroot
+					eg: WORKDIR /usr/var/lib
+				COPY <source_path/file_pattern> <dest_path>
+					Copy files from local machine to image working dir
+					eg: COPY ./*.* /usr/var/lib
+					eg: COPY ./ ./
+						- Copy all files from the current folder of loacl machine to working dir of the image
+				ENV <key> <value>
+					Set the environment variable
+					eg: ENV ACCEPT_EULA =Y
+					eg: ENV ASPNETCORE_ENVIRONMENT = Production
+				EXPOSE <port_number>
+					Set the port number to be exposed for port forwarding
+					eg: EXPOSE 5000
+				RUN <cmd args>
+					Run the commands that need to be executed at the time of building the image.
+					eg: RUN 'dotnet restore'
+					eg: RUN 'dotnet build'
+					eg: RUN 'npm install'
+				CMD <cmd args>
+					Run the commands that need to be executed at the time of creating a container.
+					eg: CMD 'echo starting application'
+				ENTRYPOINT <cmd args>
+					Run the commands that need to be executed at the time of creating a container.
+					eg: ENTRYPOINT ['dotnet', 'MyApp.dll']
+		- Multi-stage building
+			- 1) Build and publish code using a linux sdk
+				- mcr.microsoft.com/dotnet/core/sdk:latest
+			- 1) Deploy the published code to a linux runtime
+				- mcr.microsoft.com/dotnet/core/aspnet:latest
+					
+					
+				
+
+	- Docker Components
+		- Image
+			- The physical filesystem of an application.
+			- When we conatinerzie an application we create an image.
+			- Image will have
+				- image ID
+				- image name
+					- format -> imagename:tag
+					- tag is used to identify the version such as alpha, v1, 1.0
+						eg: eventapp:1.0, eventapp:alpha, eventapp:v1, eventapp:beta
+					- default tag value will be 'latest'
+						eg: eventapp -> eventapp:latest
+				- fs layers
+					- Every image containd one or more layers
+					- Common layers will be shared across images
+					- It helps us to reduce the storage space and improve upload and download speed
+		- Container
+			- Running instance of an application image is called container.
+			- Container is like a running process
+			- Container will have
+				- container id
+				- container name
+					- name is optional while creating a container
+					- if no name name is suuplied it picks a random name
+					- you can optionally supply a name while creating
+				- containers will be running in a container network
+					- every container will get an IP address
+					- external apps or clients annot access the containerized application running on the network
+					- if you want to provide access to external users we need to explicitly do port forwarding
+					- two containers running on same network can communicate each other.
+					- for internal communication we can use its IP or name.
+			- Container will have a state
+				- Running
+				- Exited (stopped)
+				- Terminated
+	- Repository/Registry
+		- Storage place of docker images we called docker repository/registry
+		- Types of repository
+			- Local repository
+				- Repository in local machine
+			- Cloud repository
+				- Private
+					- ACR - Azure Container Registry
+					- GCR - Google Cloud Registry
+					- ECR - Elastic Container Registry (AWS)
+
+				- Public
+					- DockerHub - https://hub.docker.com
+
+	- Docker networking
+		- When docker is installed it creates 3 types of network
+			- Bridge
+				- It creates a local network
+				- This is the default network option for every new container
+				- Every container will get an IP address
+				- From outside the bridge network we cannot directly access the apps running on  containers.
+				- To access the app from outside we need to enable port forwarding.
+			- Host
+				- It uses the host machine network for the containers.
+				- Container is also running in a same network of host.
+				- Other apps running on host can directly access the containerized app without port forwarding.
+			- None
+				- No network is used for containers.
+
+	- Docker CLI commands
+		- docker images
+			- List all images in local repository
+		- docker ps
+			- List all running containers(it will not show stopped containers)
+		- docker ps -a
+			- List all containers including stopped container
+		- docker inspect<imageid/imagename/containerid/containername/networkid/networkname>
+			- View the details of image, container or network
+		- docker pull <image name>
+			- Download image from cloud repository
+		- docker push <image name>
+			- Upload image to cloud repository
+		- docker rmi <image id>
+			- Remove image from local repository using id
+		- docker rm <container id>
+			- Remove a stopped container
+		- docker stop <conatiner id/name>
+			- Stop the running cotainer
+		- docker start <conatiner id/name>
+			- Start a stopped container
+		- docker rm -f <container id/name>
+			- Forcefully remove a container (it can remove running container also)
+		- docker build -t <imagename:tag> .
+			- Create a docker image
+				- represent the path of Dockerfile(its an instruction set file)
+		- docker run --name "MyContainer1" -p hostport:conatinerport <imagename>
+			- Create a new container and run it
+			- docker run --name "MyWebApp" -p 8080:80 mvcapp:latest
+		- docker logs <containerid>
+			- List the logs.
+
+	- Docker Compose
+		- Multi container deployment
+		- Uses a declarative model with YAML file
+		- YAML file extension can be .yaml or .yml
+		- Docker compose YAML file name is 'docker-compose.yaml'
+		- Optionally we can use .env file to define the environment variable values.
+
+	- Docker repository
+		- You have to follow a naming convention
+		- Image name should be 
+			<dockeraccountid>/<imagename>:<tag>
+			eg: docker push ashashivdasani/eventmanagement:latest
+			eg: docker pull ashashivdasani/eventmanagement:latest
+			eg: docker tag <origin image name> <alias name>
+			
+					
+
+
+		
+
+
+
+
+		
+
+	

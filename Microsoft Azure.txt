@@ -1,0 +1,520 @@
+What?
+	- Cloud is a set of interconnected datacenters with pool of resources that can be accessible over internet
+	- Cloud types
+		- Private
+			- Cisco, HP
+		- Public
+			- Azure, AWS, Google cloud
+		- Hybrid
+	- Cloud service models
+		- IaaS : Infrastructure as a Service
+			- Cloud vendor is providing infra services such as network, virtual machine(computer), 
+			storage(disk), firewall, IP address.
+			- IT Pro (admin) will be using such services.	
+		- PaaS : Platform as a Service
+			- Preconfigured platform
+			- Developers
+		- SaaS : Software as a Service
+			- Software is available as a service.
+			- Office 365, Dynamic CRM, OneDrive, GoogleDrive, Gmail, Skype.
+Why?
+	- OnPremise data center
+		- Infrastructure cost.
+		- Backup
+		- Disaster Recovery
+		- Security and compliance
+		- Scaling
+		- Global reach
+	- Cloud
+		- Pooled resources
+		- Built-in security and compliance
+		- Built-in Backup
+		- DR as a service
+		- Scale in seconds
+		- Global reach and georeplication
+		- Pay per use (Pay as you go)
+		- Automatic monitoring and auditing (alerts)
+How?
+	- Microsoft Azure
+		- Data Center/Regions/Locations
+			- 54+ regions
+			- India we have 3 data center: South, Central and West
+				- South: Chennai
+				- West: Mumbai
+				- Central: Pune
+			- Other Datacenters
+				- US: EastUS, East US2, West US, South Central US
+				- Brazil, SouthEast Asia (Singapore), East Asia (Hongkong)
+				- Azure has datacenters in China, but they are accessible only to chinese.
+				- Germany, US Government
+		- Subscriptions
+			- Agreement between customer and microsoft.
+			- Subscription types
+				- Pay As You Go.
+				- Enterprise agreement
+				- Free subscription.
+					- Free trial
+					- Recurring subscriptions
+		- Deployment Model
+			- Azure Resource Manager model (ARM model)
+			- Resource Group
+				- Logic grouping of one or more services.
+		- How to work with Azure?
+			- IaaS: VM, VNET,IP, Disk, Traffic Manager, Application Gateway, VMSS, Availability set.
+			- PaaS: AppService, FunctionApp, Logic App, AKS, API Gateway, ACI, SF, Storage Account, 
+			        CosmosDB, SQL Database
+			- How to connect and create Azure Services?
+				- Web Portal (https://portal.azure.com)
+					- Used by beginners
+					- Provide a UI for creating and managing services.
+				- Command Line Tools
+					- Used by IT Pro
+					- Powershell
+						- Powershell Version > 5.0
+						- Primarily for windows users
+						- Now, PowershellCore is available for Linux also.
+					- Cross Platform Command Line (Azure CLI)
+						- Windows
+						- MAC
+						- Linux
+				- Azure SDK
+					- Used by developers
+					- SDK is available for all languages such as .NEt, Java, PHP, Python, NodeJS etc
+				- ARM Template
+					- These are JSON templates.
+					- It is a declarative way of creating resources
+					- Provides better reusability
+					- A single command can be used to create group of resources.
+				- RESTful Services
+					- All instructions are executed in aure as REST services.
+					- When we use SDK, Powershell, CLI, ARM template they always makes a REST call
+					- Developers can also make direct calls to those REST services.
+		- Storage Account
+			- One of the primary storage service in Azure
+			- Storage options in storage Account
+				- Blob Storage
+					- Typically used for stroing unstructured blob files such as audio, video, images
+				          text files, documents, executables etc
+				- File Share
+					- Similar to Blob service.
+					- It uses an SMB 3.0 protocol to map the fileshare as a network drive in our
+					  personal machine						
+				- Queue
+					- Is used to implement app-app integration using text messages.
+					- Supports message based communication.
+					- One to many messaging with offline communication feature
+					- One message size is maximum 64 KB (SB queue message can have up to 256 KB)
+					- TTL for message 7 days(SB queue TTL is 14 days)
+					- FIFO is not guaranteed (SB queue FIFO is guaranteed)
+					- Partitioning of message is not possible (SB queue supports it)
+				- Table
+					- NoSQL data storage in Storage Account
+					- Store the data in Key-value pair format
+					- Every record is called an Entity
+					- Every entity must have a RowKey and PartitionKey
+					- Every entity will have a timestamp value also.
+					- One entity can have maximum of 256 attributes (Keys)
+				- Storage Account
+					- V1
+						- Performance : Standard + Premium
+						- Access Tier : Not Available
+						- All 4 service models available (Blob + File + Queue + Table)
+					- Blob
+						- Performance : Standard
+						- Access Tier : Cool and Hot Available
+						- Only Blob is available
+					- V2
+				- Replication
+					- LRS : Locally redundant
+					- ZRS : Zone redundant
+					- GRS : Geo Replication
+					- RA-GRS : Read Access Geo redundant
+				- Blob
+					- Container : Root storage place
+					- Container Access Policy
+						- Blob
+							- You can anonymously access files (blob) without any key or token
+							- Use the file URL to access it
+							- URL: https://<storageaccountname>.blob.core.windows.net/<container>/<file>
+							- Directory Browsig is not allowed
+						- Container
+							- You can anonymously access files (blob) without any key or token
+							- Blob Listing(Directory Browsing) is supported
+						- Private
+							- Anonymous access not allowed
+							- Need an access token to access files.
+							- It is secure than other modes
+					- Credentials
+						- Access keys
+						- Token (SAS Token) Shared Access Signature
+		- App Service
+			- This is a compute service used to deploy the web applications on Azure.
+			- App Service
+				- Web App
+					- Web Applications including ASP.NET MVC, Java, PHP, NodeJS etc
+				- API App
+					- Used to deploy REST and WebService applications
+				- Mobile App
+					- Used to deploy the mobile application backend services
+			- PaaS service configured with all kinds of languages and frameworks
+			- Web App
+				- Unique Web App Name
+					- https://<webappname>.azurewebsites.net
+				- Location : where to deploy
+				- App Service Plan
+					- Pricing model
+						- Free
+							- No Cost
+							- No SLA
+							- Dev and Test
+							- No Dedicated machine(Using shared machine)
+							- No Custom domain
+							- No Deployment slots
+						- Shared
+							- Custom domain mapping
+							- Not free (a minor amount to be paid)
+						- Basic
+							- Dedicated machine (A series VM)
+							- SLA 99.99%
+							- Manual scaling up to 3 instances
+						- Standard (Recommended for Production)
+							- 5 Deployment slots
+							- Backup daily 10 times
+							- Traffic Manager
+							- Auto Scale
+							- Versions : S1, S2, S3
+						- Premium
+							- 20 Deployment slots
+							- Daily 50 times backup
+							- P1, P2, P3 (A Series VM) -> P1V2, P2V2, P3V2 (D Series VM)
+						- Isolated (ASE)
+							- Creating the App Service VM in a dedicated (isolated) network
+					- Instance Size (VMSize)
+				- Application Insights (Monitoring tool) - Optional
+
+		- Deploy web app
+			- Visual Studio Publish (Web Deploy)
+			- VS Code (AppService Extension)
+			- FTP
+			- Deployment Center (CI/CD)
+				- Set your username:
+					git config --global user.name "FirstName LastName"
+				- Set your email address:
+					git config --global user.email "emailaddress"
+				- Commands
+					- git init
+					- git add .
+					- git commit -m "Message"
+					- git push -u origin master
+		- Scaling
+			- Scale up (Vertical Scaling)
+				- Increase the size of VM
+				- Increase the SKU (S1->S2) (S1->P1) (B1->S2) 
+			- Scale Out (Horizontal Design)
+				- Increase the number of instances.
+				- This automatically creates a LB to disribute the requests to all instances.
+				- Types of scaling
+					- Manual Scaling
+					- Automatic Scaling
+						- Need to specify scaling condition
+						- Scaling condition is applied based on ametric
+							- CPU Percentage
+							- Disk Utilization
+							- Http Request
+							- Messages in Storage queue or SB queue (External resource)
+		- Deployment Slots
+			- Deployment slots allows you to create staging env or testing env for your app
+			- By default, only production slot is created
+			- We can create one or more slot for staged deployment and testing
+			- Once the deployment is done in stating slot we can do a virtual swapping
+			- Swapping can be manual swapping or auto swapping
+
+	- Cosmos DB
+		- Planet scale, geo distributed, multi-model database
+		- Database Service on Cloud
+		- NoSql database service
+			- Document
+				- MongoDB
+				- DocumentDB
+			- Key-value
+				- Azure table
+			- Graph Database
+				- Gremlin
+			- Column Family
+				- Cassandra
+		- While creating a CosmosDB account we can specify the type of API need to be used.
+			- MongoDB
+			- DocumentDB (Sql API) (Core)
+			- Cassandra
+			- Gremlin
+			- Azure Table API
+		- Geo-replication
+			- Replicate to one or more locations in a single click.
+		- SLA
+			- All other Azure services provides SLA of 99.99% for HA (High Availability)
+			- CosmosDB is only the service that provides SLA for 4 parameters
+				- HA
+				- Throughput
+				- Latency
+				- Consistency
+			- It uses High Speed SSD disk for storage
+		- Throughput
+			- RU: Request Unit
+
+	- Serverless Computing
+		- No dedicated instances of VM allocated
+		- Compute resources are allocated when the request comes.
+		- When the request execution completes it deallocates the resources.
+		- Billing is based on number of requests * duration.
+		- Serverless Azure Services
+			- ACI : Azure Container Instances
+			- Azure Function App
+			- Azure Logic App
+		- Azure Container Instances
+			- Used to run containers in a serverless mode.
+			- It can run one Docker container per instance
+		- Logic App
+			- It is a serveless service for creating integration services on azure.
+			- It is used for creating Workflow application on Azure.
+			- It is also called IPaaS (Integration PaaS)
+			- Logic App provides a Visual Designer for creating workflow
+			- You can integrate multiple SaaS applications in a workflow
+			- SaaS Connectors
+				- Triggers and Actions
+			- Trigger Types
+				- Push trigger - Http Trigger, WebHook Trigger (Sending request)
+				- Pull trigger - Twitter trigger
+				- Reccurance trigger - Timer trigger (Every 5 mins Alarm)
+
+		- Azure Function App
+			- Function app is also a serverless computing services
+			- Code based : C#,JavaScript, Java, Python etc
+			- Functions also uses triggers to start execution
+				- Bindings
+					- Input Bindings (Reading data from service)
+						- Trigger is also a type of input binding
+					- Output Bindings (Writing/Output data to service)
+				- There can be zero or more input and output bindings
+			- 2 versions of function appruntime available
+				- V1 : .NET Framework based
+				- V2 : .NET Core based
+			- Develop Function Apps
+				- Azure Portal
+				- Write using Function App runtime in local machine
+					- Install Function App runtime tools
+						- function app CLI can be used to create, build, run, test and deploy
+							- Command : npm install -g azure-functions-core-tools
+				- Pricing 
+					- Consumption Plan
+						- It is a exact serverless pricing model - no. of request * duration
+						- No dedicated VM instance allocated
+						- Default max execution time is 5 mins, you can update to 10 mins
+					- AppService Plan
+						- We dont need to pay additionally for FunctionApp, because our function
+						will be executing within the AppService Plan
+						- No timeout for function execution
+						- You must enable the 'Always On'
+
+	- Azure Kubernetes Service
+		- What is Orchestrator?
+			- It is a tool/software used to manage and monitor the clustered environment.
+			- It performs automatic patching,sclaing, redeploy, backup, security etc
+			- Docker cluster Orchestrator
+				- Kubernetes
+				- DC/OS
+				- DockerSwarm
+			- Non-Docker cluster Orchestrator
+				- Azure Service Fabric 
+			- Difference between Kubernetes cluster and Azure Service Fabric (Interview Question)
+				- Kubernetes Cluster
+					- Orchestrator - Kubernetes
+					- Used for deploying containerized applications
+						- Containerized application can be monolithic or microservice
+					- *It is a Docker/Container Cluster
+					- There will be a master node and more than one worker nodes
+						- Master-Worker architecture
+						- Master node contains the Orchestrator service and cluster management 						  services.
+				- Azure Service Fabric Cluster
+					- Orchestrator - SF
+					- It can deploy only microservices apps not monolithic apps
+						- It can deploy containerized and non containerized apps
+						- It can deploy applications which is developed using SF SDK
+					- *It is a Microservice Cluster
+					- There is no master node, it uses only worker nodes.
+						- Every worker node is also master node
+		- What is Kubernetes (KBS)?
+		
+		- Why it is required?
+		- What is Kubernetes cluster?
+		- What is Azure Kubernetes Services?
+			- AKS is a Managed(creation and managing of master node/machine is done by Azure) Kubernetes 			  cluster.
+			- ACS (old service, now deprecated) is an example for unmanaged Kubernetes cluster.
+				- ACS provide optin for selecting Orchestrator type
+		- Kubernetes Documentation : aks workshop
+		- Command for Kubernetes UI : az aks browse -nk8scluster -g K8SGroup
+
+			
+
+	- Azure API Management Gateway (API Gateway)
+		- Disadvantages of App/Micro Services / Why API Management Gateway?
+			- List of URLs
+			- Security for APIs
+			- Monitoring
+			- Caching cannot be implemented after deployment
+			- Request limiting
+			- Mocking of services
+			- Response Transformation (Data format i.e. json and xml) after deployment
+			- Set Header values/Remove header
+		- We can use a intermediate component/service called API Gateway
+		- Components of Gateway
+			- Publisher Portal (Azure Portal is now providing all functionalities of Publisher Portal)
+				- API Developer/Publisher can configure the policies for operations, APIs and products.
+				- View all subscription requests and he can approve or cancel it
+			- Developer Portal
+				- Developer(Consumer of API) can send subscription request for accessing API.
+				- Once the publisher approves the request, developer will get a subscription key.
+				- Subscription key need to be supplied with every request he makes to the API Gateway
+					- Header key: Ocp-Apim-Subscription-Key	
+			- Gateway
+				- Component that provides all features required for the API.
+				- We will be implementing a set of Policies
+					- Caching Policy
+					- CORS Policy
+					- Transformation Policy
+					- Mocking Policy
+					- Set header Policy
+					- JWT token validation policy
+			- Product
+				- API
+					- Catalog API
+						- Operations
+							- GetAllItems()
+							- GetById()
+							- AddItem()
+					- Basket API
+					- Order API
+	- Event Grid
+		- Communication Strategies
+			- Asynchronous
+				- Message
+					- Text Message
+					- We use a message broker (RabbitMQ, ServiceBus Queue, Storage Account Queue)
+					- Not real time
+					- One to many is possible
+					- It is not required that sender and receiver to be online
+					- Response is not mandatory
+			- Synchronous
+				- REST
+					- One to One
+					- Real time
+					- Always response come back to client
+					- Sender and Receiver must be online
+			- Event Based
+				- Real time
+				- One to many
+				- No response required
+				- Sender and Receiver must be online
+				- Event argument can contain even data
+		- Event grid is an azure managed service
+		- It helps to implement event driven architecture in app
+		- Custom Events(Topic)
+			- Steps:
+				- Create a resource
+				- Event Grid Topic
+				- Create New Event Grid Topic
+				- Go to created event
+				- Copy topic end point url
+				- Go to Access keys and copy key
+				- Use the custom application (publisher application)
+				- Install Nuget Package "Microsoft.Azure.EvenGrid"
+				- Store the topic end point url and key in custom app
+				- Create a subscriber application
+				- Publish the subscriber app in Azure Function App
+				- Add new subscriber by clicking on Add Event Subscription
+				- Select endpoint as WebHook and provide url of published subscriber in Azure Function App
+				- Run the publisher app from console it will show logs in Azure portal
+
+	- Azure DevOps
+		- What is Git?
+		    - Git Operations
+		    - Locally working on Git
+		    - Uploading to remote git repo		
+		    - Git Commands
+			- To include .git folder in application folder "git init"
+			- Add ".gitignore" file to application folder
+			- To track current folder/Save changes/Move to stating state "git add ."
+			- To commit the changes "git commit -m "Initial Commit""
+			- To list which files are modified "git status"
+			- To list existing branch "git branch"
+			- Create a new branch "git branch feature/products"
+			- Swtich to new branch "git checkout <branchname>"
+			- Commit changes in new branch first run "git add ." then "git commit -m "Product Added""
+			- Merge new branch to master
+				- Switch to master branch "git checkout <branchname>"
+				- Merge command "git merge <branchname>"
+			- Rollback to previous state
+				- git reset --hard <last_commit_id>
+			- To get logs
+				- git logs
+		- Azure Boards
+			- Workitems
+			- Status
+		- Azure Repos (store the local code)
+			- Multiple Repos
+			- Create Branches
+			- Create branch from workitem
+			- Create remote repository
+				- git remote add origin <Url of portal from Azure Devops repository >
+			- Upload code to remote repository i.e Azure Devops repository
+				- git push -u origin(random name) --all
+		- Azure Pipeline
+			- Build Pipeline
+				- Whenever a code is pushed into repository, we need to compile and build
+				  the artifacts for the application
+				- Output of build pipelineis build artifact
+				- Build process can be
+					- Automated: Continuous Integration
+					- Manual: 
+			- Release Pipeline
+				- Service Connections
+				- Continuous Deployment Trigger
+	- Service Fabric
+		- What is SF?
+			- SF is a framework/SDK for developing microservices
+			- SF is an azure service which helps you to deploy SF applications
+		- If you want to develop microservices using SF, you need to follow the SF development pattern
+		- In service fabric we can create 4 types of Services.
+			- Reliable Services
+				- Stateful
+				- Stateless
+			- Reliable Actor
+			- Guest Executable
+				- It is used to run non dot net service applications
+			- Containers
+				- It is used to run Docker Containers
+		- A service fabric emulator is available for local/offline development
+			- Service Fabric Local Cluster Management
+			- 1 node cluster , 5 node cluster
+		- SF Cluster
+			- No master node
+			- System service(Cluster service)
+				- Cluster Manager
+					- To manage the SF cluster - deployment of services
+				- Naming Service
+					- For name resolution of services
+					- We use .NET remoting as communication
+						- fabric:/servicename ->IP Address
+				- Failover Manager
+					- responsible for failover of Nodes.
+					- If one node is falied/goes down it creates a new node.
+				- ImageStore
+					- It is used to store the code and configuration
+					- Whenever redeployment happens it uses the code and configuration.
+				- FaultAnalysis Service (Azure only)
+					- Cluster failure testing
+		- Service Fabric Configuration Files
+			- ApplicationManifest.xml
+			- ServiceManifest.xml
+		
+					
+					

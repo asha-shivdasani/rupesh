@@ -1,0 +1,17 @@
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Admin@123" -p 1500:1433 --name mssql -d mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+
+Steps:
+Open code in vs code
+Create a docker file named as 'Dockerfile' in project folder
+write commands in docker file (created in step 2)
+
+
+
+do we need to install sql container???
+
+to install sql container below command is used
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Admin@123" -p 1500:1433 --name mssql -d mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+
+for database creation below command is used
+
+docker run --name "eventmgt" -d -p 8086:80 -e "ConnectionStrings:EventSqlConnection=Data Source=172.17.0.3;Initial Catalog=HexaDB;Persist Security Info=True;User ID=sa;Password=Admin@123" eventmanagement:latest
